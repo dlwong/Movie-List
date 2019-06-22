@@ -1,0 +1,10 @@
+
+var Search = props => React.createElement(
+  "div",
+  { className: "search-container" },
+  React.createElement("input", { type: "text", placeholder: "Search...", onChange: e => props.handleChange(e) }),
+  React.createElement("input", { type: "submit", onClick: () => props.handleClick(), value: "Go!" })
+);
+
+export default Search;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL1NlYXJjaC5qc3giXSwibmFtZXMiOlsiU2VhcmNoIiwicHJvcHMiLCJlIiwiaGFuZGxlQ2hhbmdlIiwiaGFuZGxlQ2xpY2siXSwibWFwcGluZ3MiOiI7QUFDQSxJQUFJQSxTQUFVQyxLQUFELElBQ1Q7QUFBQTtBQUFBLElBQUssV0FBVSxrQkFBZjtBQUNFLGlDQUFPLE1BQUssTUFBWixFQUFtQixhQUFZLFdBQS9CLEVBQTJDLFVBQWFDLENBQUQsSUFBT0QsTUFBTUUsWUFBTixDQUFtQkQsQ0FBbkIsQ0FBOUQsR0FERjtBQUVFLGlDQUFPLE1BQUssUUFBWixFQUFxQixTQUFXLE1BQU1ELE1BQU1HLFdBQU4sRUFBdEMsRUFBMkQsT0FBTSxLQUFqRTtBQUZGLENBREo7O0FBT0UsZUFBZUosTUFBZiIsImZpbGUiOiJTZWFyY2guanMiLCJzb3VyY2VzQ29udGVudCI6WyJcbnZhciBTZWFyY2ggPSAocHJvcHMpID0+IChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cInNlYXJjaC1jb250YWluZXJcIj5cbiAgICAgIDxpbnB1dCB0eXBlPVwidGV4dFwiIHBsYWNlaG9sZGVyPVwiU2VhcmNoLi4uXCIgb25DaGFuZ2UgPSB7KGUpID0+IHByb3BzLmhhbmRsZUNoYW5nZShlKX0vPlxuICAgICAgPGlucHV0IHR5cGU9XCJzdWJtaXRcIiBvbkNsaWNrID0geygpID0+IHByb3BzLmhhbmRsZUNsaWNrKCl9IHZhbHVlPSdHbyEnIC8+XG4gICAgPC9kaXY+IFxuICApO1xuICBcbiAgZXhwb3J0IGRlZmF1bHQgU2VhcmNoOyJdfQ==

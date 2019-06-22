@@ -1,0 +1,10 @@
+
+var Add = props => React.createElement(
+  "div",
+  { className: "add-container" },
+  React.createElement("input", { type: "text", placeholder: "Add movie title here", onChange: event => props.handleTitle(event) }),
+  React.createElement("input", { type: "submit", onClick: () => props.handleAdd(), value: "Add" })
+);
+
+export default Add;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL0FkZC5qc3giXSwibmFtZXMiOlsiQWRkIiwicHJvcHMiLCJldmVudCIsImhhbmRsZVRpdGxlIiwiaGFuZGxlQWRkIl0sIm1hcHBpbmdzIjoiO0FBQ0EsSUFBSUEsTUFBT0MsS0FBRCxJQUNOO0FBQUE7QUFBQSxJQUFLLFdBQVUsZUFBZjtBQUNFLGlDQUFPLE1BQUssTUFBWixFQUFtQixhQUFZLHNCQUEvQixFQUFzRCxVQUFhQyxLQUFELElBQVdELE1BQU1FLFdBQU4sQ0FBa0JELEtBQWxCLENBQTdFLEdBREY7QUFFRSxpQ0FBTyxNQUFLLFFBQVosRUFBcUIsU0FBVyxNQUFNRCxNQUFNRyxTQUFOLEVBQXRDLEVBQXlELE9BQU0sS0FBL0Q7QUFGRixDQURKOztBQU9FLGVBQWVKLEdBQWYiLCJmaWxlIjoiQWRkLmpzIiwic291cmNlc0NvbnRlbnQiOlsiXG52YXIgQWRkID0gKHByb3BzKSA9PiAoXG4gICAgPGRpdiBjbGFzc05hbWU9XCJhZGQtY29udGFpbmVyXCI+XG4gICAgICA8aW5wdXQgdHlwZT1cInRleHRcIiBwbGFjZWhvbGRlcj1cIkFkZCBtb3ZpZSB0aXRsZSBoZXJlXCIgb25DaGFuZ2UgPSB7KGV2ZW50KSA9PiBwcm9wcy5oYW5kbGVUaXRsZShldmVudCl9Lz5cbiAgICAgIDxpbnB1dCB0eXBlPVwic3VibWl0XCIgb25DbGljayA9IHsoKSA9PiBwcm9wcy5oYW5kbGVBZGQoKX0gdmFsdWU9J0FkZCcgLz5cbiAgICA8L2Rpdj4gXG4gICk7XG4gIFxuICBleHBvcnQgZGVmYXVsdCBBZGQ7Il19
