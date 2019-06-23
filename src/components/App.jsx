@@ -7,13 +7,18 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      filteredItems : null,
       query: '',
-      items: ['Mean Girls', 'Hackers', 'The Grey', 'Sunshine', 'Ex Machina'],
-      item: ''
+      items: [
+        {title: 'Mean Girls', watched: true},
+        {title: 'Hackers', watched: true},
+        {title: 'The Grey', watched: true},
+        {title: 'Sunshine', watched: true},
+        {title: 'Ex Machina', watched: true},
+      ]
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.handleTitle = this.handleTitle.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
   }
 
@@ -22,43 +27,37 @@ class App extends React.Component {
   }
 
   handleClick() {
-    this.renderList();
+    var list = this.state.items.filter(item => 
+          item.title.toLowerCase().includes(this.state.query.toLowerCase()));
+    this.setState({filteredItems: list}) 
     event.preventDefault();
   }
 
-  renderList() {
-    var list = this.state.items.filter(item => 
-      item.toLowerCase().includes(this.state.query.toLowerCase()));
-    this.setState({items: list})     
-  }
-
-  handleTitle(event){
-    this.setState({item: event.target.value});
-  }
-
   handleAdd(){
-    array.push(this.state.item)
-    console.log(array)
+    array.push({title:this.state.query, watched: true})
     this.setState({items: array})
     event.preventDefault();
   }
 
   render() {
+    let movies; 
+    movies = this.state.filteredItems ? this.state.filteredItems : this.state.items
+    
     return (
       <div className="movie-list" >
         <h2>MovieList</h2>
           <nav className="add-movie" >
-            <Add value={this.state.item} handleTitle={this.handleTitle} handleAdd={this.handleAdd}/>
+            <Add value={this.state.item} handleTitle={this.handleChange} handleAdd={this.handleAdd}/>
           </nav>
              <Search value={this.state.query} handleChange={this.handleChange} handleClick={this.handleClick} />
           <div className="movie-list-entry">
-            <MovieList items={this.state.items} handleProps={this.handleProps}/>
+            <MovieList items={movies}/>
           </div>
       </div>
     );
   }
 };
 
-var array = [];
+let array = [];
 
 export default App;
