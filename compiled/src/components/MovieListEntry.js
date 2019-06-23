@@ -1,33 +1,39 @@
 
-class MovieListEntry extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            toggle: false
-        };
-    }
-
-    handleToggle() {
-        this.setState(state => ({
-            toggle: !state.toggle
-        }));
-    }
-
-    render() {
-        return React.createElement(
-            'div',
-            null,
-            React.createElement(
-                'button',
-                { onClick: this.handleToggle.bind(this) },
-                this.state.toggle ? 'WATCHED' : 'TO WATCH'
-            )
-        );
-    }
-};
+var MovieListEntry = props => React.createElement(
+   'div',
+   null,
+   React.createElement(
+      'button',
+      { onClick: () => props.handleToggle(props.title) },
+      props.watched ? 'WATCHED' : 'TO WATCH'
+   )
+);
 
 export default MovieListEntry;
 
-{/* <button class="tablinks" onclick="openCity(event, 'London')">Watched</button>
-    <button class="tablinks" onclick="openCity(event, 'Paris')">To Watch</button> */}
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL01vdmllTGlzdEVudHJ5LmpzeCJdLCJuYW1lcyI6WyJNb3ZpZUxpc3RFbnRyeSIsIlJlYWN0IiwiQ29tcG9uZW50IiwiY29uc3RydWN0b3IiLCJwcm9wcyIsInN0YXRlIiwidG9nZ2xlIiwiaGFuZGxlVG9nZ2xlIiwic2V0U3RhdGUiLCJyZW5kZXIiLCJiaW5kIl0sIm1hcHBpbmdzIjoiO0FBQ0EsTUFBTUEsY0FBTixTQUE2QkMsTUFBTUMsU0FBbkMsQ0FBNkM7QUFDekNDLGdCQUFZQyxLQUFaLEVBQWtCO0FBQ2QsY0FBTUEsS0FBTjtBQUNBLGFBQUtDLEtBQUwsR0FBYTtBQUNUQyxvQkFBUTtBQURDLFNBQWI7QUFHSDs7QUFFREMsbUJBQWU7QUFDWCxhQUFLQyxRQUFMLENBQWNILFVBQVU7QUFDcEJDLG9CQUFRLENBQUNELE1BQU1DO0FBREssU0FBVixDQUFkO0FBR0g7O0FBSURHLGFBQVM7QUFDTCxlQUNBO0FBQUE7QUFBQTtBQUNJO0FBQUE7QUFBQSxrQkFBUSxTQUFTLEtBQUtGLFlBQUwsQ0FBa0JHLElBQWxCLENBQXVCLElBQXZCLENBQWpCO0FBQ0kscUJBQUtMLEtBQUwsQ0FBV0MsTUFBWCxHQUFvQixTQUFwQixHQUFnQztBQURwQztBQURKLFNBREE7QUFPSDtBQXhCd0MsQ0F5QjVDOztBQUVELGVBQWVOLGNBQWY7O0FBRUEsQ0FBQztvRkFDZ0YiLCJmaWxlIjoiTW92aWVMaXN0RW50cnkuanMiLCJzb3VyY2VzQ29udGVudCI6WyJcbmNsYXNzIE1vdmllTGlzdEVudHJ5IGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcbiAgICBjb25zdHJ1Y3Rvcihwcm9wcyl7XG4gICAgICAgIHN1cGVyKHByb3BzKTtcbiAgICAgICAgdGhpcy5zdGF0ZSA9IHtcbiAgICAgICAgICAgIHRvZ2dsZTogZmFsc2VcbiAgICAgICAgICAgICAgICAgICAgIH07XG4gICAgfVxuXG4gICAgaGFuZGxlVG9nZ2xlKCkge1xuICAgICAgICB0aGlzLnNldFN0YXRlKHN0YXRlID0+ICh7XG4gICAgICAgICAgICB0b2dnbGU6ICFzdGF0ZS50b2dnbGVcbiAgICAgICAgICB9KSk7XG4gICAgfVxuXG5cblxuICAgIHJlbmRlcigpIHtcbiAgICAgICAgcmV0dXJuIChcbiAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxidXR0b24gb25DbGljaz17dGhpcy5oYW5kbGVUb2dnbGUuYmluZCh0aGlzKX0+XG4gICAgICAgICAgICAgICB7dGhpcy5zdGF0ZS50b2dnbGUgPyAnV0FUQ0hFRCcgOiAnVE8gV0FUQ0gnfVxuICAgICAgICAgICAgPC9idXR0b24+ICBcbiAgICAgICAgPC9kaXY+XG4gICAgICAgIClcbiAgICB9XG59O1xuXG5leHBvcnQgZGVmYXVsdCBNb3ZpZUxpc3RFbnRyeTtcblxuey8qIDxidXR0b24gY2xhc3M9XCJ0YWJsaW5rc1wiIG9uY2xpY2s9XCJvcGVuQ2l0eShldmVudCwgJ0xvbmRvbicpXCI+V2F0Y2hlZDwvYnV0dG9uPlxuPGJ1dHRvbiBjbGFzcz1cInRhYmxpbmtzXCIgb25jbGljaz1cIm9wZW5DaXR5KGV2ZW50LCAnUGFyaXMnKVwiPlRvIFdhdGNoPC9idXR0b24+ICovfSJdfQ==
+// class MovieListEntry extends React.Component {
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             toggle: false
+//                      };
+//     }
+
+//     handleToggle() {
+//         this.setState(state => ({
+//             toggle: !state.toggle
+//           }));
+//         //this.props.items.watched = !this.props.items.watched
+//     }
+
+//     render() {
+//         return (
+//         <div>
+//             <button onClick={this.handleToggle.bind(this)}>
+//                {this.state.toggle ? 'WATCHED' : 'TO WATCH'}
+//             </button>  
+//         </div>
+//         )
+//     }
+// };
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL01vdmllTGlzdEVudHJ5LmpzeCJdLCJuYW1lcyI6WyJNb3ZpZUxpc3RFbnRyeSIsInByb3BzIiwiaGFuZGxlVG9nZ2xlIiwidGl0bGUiLCJ3YXRjaGVkIl0sIm1hcHBpbmdzIjoiO0FBQ0EsSUFBSUEsaUJBQWtCQyxLQUFELElBQ2I7QUFBQTtBQUFBO0FBQ0k7QUFBQTtBQUFBLFFBQVEsU0FBUyxNQUFNQSxNQUFNQyxZQUFOLENBQW1CRCxNQUFNRSxLQUF6QixDQUF2QjtBQUNJRixZQUFNRyxPQUFOLEdBQWdCLFNBQWhCLEdBQTRCO0FBRGhDO0FBREosQ0FEUjs7QUFRQSxlQUFlSixjQUFmOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSIsImZpbGUiOiJNb3ZpZUxpc3RFbnRyeS5qcyIsInNvdXJjZXNDb250ZW50IjpbIlxudmFyIE1vdmllTGlzdEVudHJ5ID0gKHByb3BzKSA9PiAoXG4gICAgICAgIDxkaXY+XG4gICAgICAgICAgICA8YnV0dG9uIG9uQ2xpY2s9eygpID0+IHByb3BzLmhhbmRsZVRvZ2dsZShwcm9wcy50aXRsZSl9PlxuICAgICAgICAgICAgICAge3Byb3BzLndhdGNoZWQgPyAnV0FUQ0hFRCcgOiAnVE8gV0FUQ0gnfVxuICAgICAgICAgICAgPC9idXR0b24+ICBcbiAgICAgICAgPC9kaXY+XG4pO1xuXG5leHBvcnQgZGVmYXVsdCBNb3ZpZUxpc3RFbnRyeTtcblxuLy8gY2xhc3MgTW92aWVMaXN0RW50cnkgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuLy8gICAgIGNvbnN0cnVjdG9yKHByb3BzKXtcbi8vICAgICAgICAgc3VwZXIocHJvcHMpO1xuLy8gICAgICAgICB0aGlzLnN0YXRlID0ge1xuLy8gICAgICAgICAgICAgdG9nZ2xlOiBmYWxzZVxuLy8gICAgICAgICAgICAgICAgICAgICAgfTtcbi8vICAgICB9XG5cbi8vICAgICBoYW5kbGVUb2dnbGUoKSB7XG4vLyAgICAgICAgIHRoaXMuc2V0U3RhdGUoc3RhdGUgPT4gKHtcbi8vICAgICAgICAgICAgIHRvZ2dsZTogIXN0YXRlLnRvZ2dsZVxuLy8gICAgICAgICAgIH0pKTtcbi8vICAgICAgICAgLy90aGlzLnByb3BzLml0ZW1zLndhdGNoZWQgPSAhdGhpcy5wcm9wcy5pdGVtcy53YXRjaGVkXG4vLyAgICAgfVxuXG4vLyAgICAgcmVuZGVyKCkge1xuLy8gICAgICAgICByZXR1cm4gKFxuLy8gICAgICAgICA8ZGl2PlxuLy8gICAgICAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXt0aGlzLmhhbmRsZVRvZ2dsZS5iaW5kKHRoaXMpfT5cbi8vICAgICAgICAgICAgICAgIHt0aGlzLnN0YXRlLnRvZ2dsZSA/ICdXQVRDSEVEJyA6ICdUTyBXQVRDSCd9XG4vLyAgICAgICAgICAgICA8L2J1dHRvbj4gIFxuLy8gICAgICAgICA8L2Rpdj5cbi8vICAgICAgICAgKVxuLy8gICAgIH1cbi8vIH07Il19

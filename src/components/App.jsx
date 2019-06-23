@@ -20,6 +20,20 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleWatch = this.handleWatch.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
+  }
+
+  handleToggle(e) {
+    var newMovies = [...this.state.items]
+
+    newMovies = newMovies.map(movie => {
+        if (movie.title === e ){
+          movie.watched = !movie.watched
+        }
+          return movie;
+    });
+    console.log(e)
   }
 
   handleChange(e) {
@@ -39,6 +53,20 @@ class App extends React.Component {
     event.preventDefault();
   }
 
+  handleWatch(){
+    var list = this.state.items.filter(item => 
+      item.watched === true);
+    this.setState({filteredItems: list}) 
+    event.preventDefault();
+  }
+
+  handleNotWatch(){
+    var list = this.state.items.filter(item => 
+      item.watched === false);
+    this.setState({filteredItems: list}) 
+    event.preventDefault();
+  }
+
   render() {
     let movies; 
     movies = this.state.filteredItems ? this.state.filteredItems : this.state.items
@@ -50,8 +78,10 @@ class App extends React.Component {
             <Add value={this.state.item} handleTitle={this.handleChange} handleAdd={this.handleAdd}/>
           </nav>
              <Search value={this.state.query} handleChange={this.handleChange} handleClick={this.handleClick} />
+              <input type="submit" onClick = {()=> this.handleWatch()} value='Watched' />
+              <input type="submit" onClick = {()=> this.handleNotWatch()} value='Not Watch' />
           <div className="movie-list-entry">
-            <MovieList items={movies}/>
+            <MovieList items={movies} handleToggle={this.handleToggle}/>
           </div>
       </div>
     );
