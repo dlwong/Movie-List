@@ -26,17 +26,11 @@ class App extends React.Component {
     this.getMovieInfo = this.getMovieInfo.bind(this);
   }
 
-  componentDidMount() {
-    console.log('mounted!')
-    this.getMovieInfo();
-  }
-
-  getMovieInfo(){
-    this.props.searchMovieDB(movies =>
-    //   this.setState({
-    //     movies:movies
-    //   })
-        console.log(movies.results[0].title)
+  getMovieInfo(title){
+    this.props.searchMovieDB(title, (movies) =>
+      this.setState({
+        popularity : movies.results[0].popularity
+      })
      );
   }
 
@@ -45,6 +39,7 @@ class App extends React.Component {
 
     newMovies = newMovies.map(movie => {
       movie.showComponent = movie.title === e ? true : false;
+      this.getMovieInfo(e);
           return movie;
     });
     this.setState({items:newMovies});
@@ -108,7 +103,7 @@ class App extends React.Component {
               <input type="submit" onClick = {()=> this.handleWatch()} value='Watched' />
               <input type="submit" onClick = {()=> this.handleNotWatch()} value='To Watch' />
           <div className="movie-list-entry">
-            <MovieList items={movies} handleToggle={this.handleToggle} handlePanel={this.handlePanel}/>
+            <MovieList items={movies} handleToggle={this.handleToggle} handlePanel={this.handlePanel} popularity={this.state.popularity}/>
           </div>
       </div>
     );

@@ -1,13 +1,18 @@
 
 var MovieListEntry = (props) => (
-        <div>
-            <button onClick={() => props.handleToggle(props.title)}>
-               {props.watched ? 'WATCHED' : 'TO WATCH'}
-            </button>  
-        </div>
+    <div>
+        <div>Popularity: {props.popularity}</div>
+         <input type="checkbox" 
+          checked={props.watched ? true : false}
+          onClick={() => props.handleToggle(props.title)}/> Watched
+    </div>
 );
 
 export default MovieListEntry;
+
+// <button onClick={() => props.handleToggle(props.title)}>
+// {props.watched ? 'WATCHED' : 'TO WATCH'}
+// </button> 
 
 // class MovieListEntry extends React.Component {
 //     constructor(props){
