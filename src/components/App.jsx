@@ -10,11 +10,11 @@ class App extends React.Component {
       filteredItems : null,
       query: '',
       items: [
-        {title: 'Mean Girls', watched: true},
-        {title: 'Hackers', watched: true},
-        {title: 'The Grey', watched: true},
-        {title: 'Sunshine', watched: true},
-        {title: 'Ex Machina', watched: true},
+        {title: 'Mean Girls', watched: true, showComponent: false},
+        {title: 'Hackers', watched: true, showComponent: false},
+        {title: 'The Grey', watched: true, showComponent: false},
+        {title: 'Sunshine', watched: true, showComponent: false},
+        {title: 'Ex Machina', watched: true, showComponent: false},
       ]
     };
     this.handleChange = this.handleChange.bind(this);
@@ -22,7 +22,34 @@ class App extends React.Component {
     this.handleAdd = this.handleAdd.bind(this);
     this.handleWatch = this.handleWatch.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
+    this.handlePanel = this.handlePanel.bind(this);
+    this.getMovieInfo = this.getMovieInfo.bind(this);
   }
+
+  componentDidMount() {
+    console.log('mounted!')
+    this.getMovieInfo();
+  }
+
+  getMovieInfo(){
+    this.props.searchMovieDB(movies =>
+    //   this.setState({
+    //     movies:movies
+    //   })
+        console.log(movies.results[0].title)
+     );
+  }
+
+  handlePanel(e){
+    var newMovies = [...this.state.items]
+
+    newMovies = newMovies.map(movie => {
+      movie.showComponent = movie.title === e ? true : false;
+          return movie;
+    });
+    this.setState({items:newMovies});
+  };
+
 
   handleToggle(e) {
     var newMovies = [...this.state.items]
@@ -33,7 +60,7 @@ class App extends React.Component {
         }
           return movie;
     });
-    console.log(e)
+    this.setState({items:newMovies});
   }
 
   handleChange(e) {
@@ -48,7 +75,7 @@ class App extends React.Component {
   }
 
   handleAdd(){
-    array.push({title:this.state.query, watched: true})
+    array.push({title:this.state.query, watched: true, showComponent: false})
     this.setState({items: array})
     event.preventDefault();
   }
@@ -70,7 +97,7 @@ class App extends React.Component {
   render() {
     let movies; 
     movies = this.state.filteredItems ? this.state.filteredItems : this.state.items
-    
+
     return (
       <div className="movie-list" >
         <h2>MovieList</h2>
@@ -79,9 +106,9 @@ class App extends React.Component {
           </nav>
              <Search value={this.state.query} handleChange={this.handleChange} handleClick={this.handleClick} />
               <input type="submit" onClick = {()=> this.handleWatch()} value='Watched' />
-              <input type="submit" onClick = {()=> this.handleNotWatch()} value='Not Watch' />
+              <input type="submit" onClick = {()=> this.handleNotWatch()} value='To Watch' />
           <div className="movie-list-entry">
-            <MovieList items={movies} handleToggle={this.handleToggle}/>
+            <MovieList items={movies} handleToggle={this.handleToggle} handlePanel={this.handlePanel}/>
           </div>
       </div>
     );

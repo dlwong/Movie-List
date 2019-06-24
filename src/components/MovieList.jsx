@@ -1,14 +1,16 @@
-import MovieListEntry from './MovieListEntry.js'
+import MovieListEntry from './MovieListEntry.js';
 
-var MovieList = (props) => (
+var MovieList = (props) => {
+
+  return (
     <div>
-      {props.items.map(({title, watched}) => 
-          <ul key={title}>{title}
-          <MovieListEntry title={title} watched={watched} handleToggle={props.handleToggle}/>
-        </ul>
+      {props.items.map(({title, watched, showComponent}) => 
+          <ul key={title} onClick={() => props.handlePanel(title)}> {title}
+           {showComponent &&  <MovieListEntry title={title} watched={watched} handleToggle={props.handleToggle}/> } 
+           </ul>
       )}
-    </div>
-  );
+    </div>)
+  };
 
 
 export default MovieList; 
